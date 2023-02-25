@@ -1,0 +1,24 @@
+curl -X POST --location "http://127.0.0.1:8080/login" \
+    -H "Content-Type: application/json" \
+    -d "{
+          \"id\": \"rafa\",
+          \"password\": \"1337\"
+        }" \
+    -i
+
+curl -X GET --location "http://127.0.0.1:8080/hello" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJodHRwOi8vMC4wLjAuMDo4MDgwL2hlbGxvIiwiaXNzIjoiaHR0cDovLzAuMC4wLjA6ODA4MC8iLCJpZCI6InJhZmEiLCJleHAiOjE2NzczMzEzMTl9.qfdvHPrHYLaoLdpVtapinH9aumtGdmrCG-YevOewxcg" \
+    -i
+
+curl -X GET --location "http://127.0.0.1:8080/article" \
+    -H "Accept: application/json" \
+    -i
+
+curl -X POST --location "http://127.0.0.1:8080/article" \
+    -H "Content-Type: application/json" \
+    -d "{
+            \"title\": \"INSERTED VIA ROUTE\",
+            \"body\": \"NOW THINGS ARE GETTING EXCITANT\"
+        }" \
+    -i

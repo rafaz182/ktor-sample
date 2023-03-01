@@ -12,7 +12,7 @@ class ArticleDAOImpl : ArticleDAO {
         id = row[Articles.id],
         title = row[Articles.title],
         body = row[Articles.body],
-        dateCreated = row[Articles.dateCreated]
+        dateCreated = row[Articles.dateCreated].toLocalDateTime()
     )
 
     override suspend fun allArticles(): List<Article> = dbQuery {
@@ -30,7 +30,6 @@ class ArticleDAOImpl : ArticleDAO {
         val insertStatement = Articles.insert {
             it[Articles.title] = title
             it[Articles.body] = body
-            //it[dateCreated] = LocalDateTime(java.time.LocalDateTime.now())
         }
         insertStatement.resultedValues?.singleOrNull()?.let(::resultRowToArticle)
     }

@@ -30,18 +30,18 @@ dependencies {
     implementation("io.ktor:ktor-server-cors:$ktor_version")
     implementation("io.ktor:ktor-server-config-yaml:$ktor_version")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
+    //implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.4.0")
 
     //authz authn
-    //implementation("io.ktor:ktor-server-sessions:$ktor_version")
     implementation("io.ktor:ktor-server-auth:$ktor_version")
     implementation("io.ktor:ktor-server-auth-jwt:$ktor_version")
 
     //db integration
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposed_version")
-    implementation("mysql:mysql-connector-java:8.0.17")
+    //implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposed_version")
+    implementation("org.jetbrains.exposed:exposed-jodatime:$exposed_version")
+    implementation("com.mysql:mysql-connector-j:8.0.32")
 
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")

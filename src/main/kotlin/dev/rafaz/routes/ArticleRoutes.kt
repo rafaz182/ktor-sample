@@ -1,7 +1,7 @@
 package dev.rafaz.routes
 
 import dev.rafaz.database.ArticleDAO
-import dev.rafaz.dto.ArticleDTO
+import dev.rafaz.dtos.ArticleDTO
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*

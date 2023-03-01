@@ -1,7 +1,7 @@
 package dev.rafaz
 
 import dev.rafaz.database.ArticleDAO
-import dev.rafaz.database.ArticleDAOImpl
+import dev.rafaz.database.daoimpl.ArticleDAOImpl
 import dev.rafaz.database.DatabaseFactory
 import dev.rafaz.plugins.*
 import io.ktor.http.*

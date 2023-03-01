@@ -1,8 +1,9 @@
-package dev.rafaz.database
+package dev.rafaz.database.daoimpl
 
+import dev.rafaz.database.ArticleDAO
 import dev.rafaz.database.DatabaseFactory.dbQuery
+import dev.rafaz.database.tables.Articles
 import dev.rafaz.models.Article
-import dev.rafaz.models.Articles
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
 

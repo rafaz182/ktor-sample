@@ -1,11 +1,7 @@
 package dev.rafaz.models
 
-import dev.rafaz.serializers.DateTimeIso8601Serializer
 import dev.rafaz.serializers.LocalDateTimeIso8601Serializer
 import kotlinx.serialization.Serializable
-import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.jodatime.datetime
-import org.joda.time.DateTime
 import org.joda.time.LocalDateTime
 
 //https://stackoverflow.com/questions/67305843/kotlinx-serialization-deserializing-dates
@@ -21,13 +17,3 @@ data class Article(
     @Serializable(with = LocalDateTimeIso8601Serializer::class)
     val dateCreated: LocalDateTime
 )
-
-object Articles : Table() {
-    val id = integer("id").autoIncrement()
-    val title = varchar("title", 128)
-    val body = varchar("body", 1024)
-    val dateCreated = datetime("date_created").clientDefault { DateTime.now() }
-
-    override val primaryKey: PrimaryKey
-        get() = PrimaryKey(id)
-}

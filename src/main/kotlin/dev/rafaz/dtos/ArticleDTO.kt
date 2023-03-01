@@ -1,4 +1,4 @@
-package dev.rafaz.dto
+package dev.rafaz.dtos
 
 import kotlinx.serialization.Serializable
 

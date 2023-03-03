@@ -11,6 +11,7 @@ import dev.rafaz.models.GeneralAttribute
 import dev.rafaz.models.GeneralOption
 import org.jetbrains.exposed.sql.JoinType
 import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.select
 
 class GeneralAttributesDAOImpl(private val generalOptionsDAO: GeneralOptionsDAO) : GeneralAttributesDAO {
@@ -70,7 +71,17 @@ class GeneralAttributesDAOImpl(private val generalOptionsDAO: GeneralOptionsDAO)
         } ?: false
     }
 
-    override suspend fun deleteAttribute(attributeId: Int): Boolean {
-        TODO("Not yet implemented")
+    override suspend fun deleteAttribute(attributeId: Int): Boolean = dbQuery {
+        GeneralAttributeEntity.findById(attributeId)?.delete() ?: return@dbQuery false
+        true
+    }
+
+    override suspend fun attachToACategory(categoryId: Int, attributeId: Int): Boolean = dbQuery {
+        val insertStatement = CategoriesGeneralAttributes.insert {
+            it[CategoriesGeneralAttributes.category] = categoryId
+            it[CategoriesGeneralAttributes.attribute] = attributeId
+        }
+        insertStatement.resultedValues?.singleOrNull() ?: return@dbQuery false
+        true
     }
 }

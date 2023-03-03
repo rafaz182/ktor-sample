@@ -9,4 +9,5 @@ interface GeneralAttributesDAO {
     suspend fun newAttribute(name: String, description: String): GeneralAttributeEntity
     suspend fun editAttribute(attributeId: Int, name: String?, description: String?): Boolean
     suspend fun deleteAttribute(attributeId: Int): Boolean
+    suspend fun attachToACategory(categoryId: Int, attributeId: Int): Boolean
 }

@@ -19,9 +19,7 @@ fun main(args: Array<String>): Unit =
 @Suppress("unused")
 fun Application.module() {
     configureSerialization()
-    val url = environment.config.property("database.url").getString()
-    val driver = environment.config.property("database.driver").getString()
-    DatabaseFactory.init(url, driver)
+    DatabaseFactory.init(environment.config)
 
     install(CORS) {
         //allowHeader()

@@ -38,10 +38,11 @@ dependencies {
     implementation("io.ktor:ktor-server-auth-jwt:$ktor_version")
 
     //db integration
-    implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
+    implementation(platform("org.jetbrains.exposed:exposed-bom:$exposed_version"))
+    implementation("org.jetbrains.exposed:exposed-dao")
+    implementation("org.jetbrains.exposed:exposed-jdbc")
     //implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposed_version")
-    implementation("org.jetbrains.exposed:exposed-jodatime:$exposed_version")
+    implementation("org.jetbrains.exposed:exposed-jodatime")
     implementation("com.mysql:mysql-connector-j:8.0.32")
     implementation("com.zaxxer:HikariCP:$hikaricp_version")
 

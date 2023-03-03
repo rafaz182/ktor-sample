@@ -7,8 +7,8 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.ReferenceOption
 
 object GeneralOptions : IntIdTable() {
+    val attribute   = reference("id_attribute", GeneralAttributes, onDelete = ReferenceOption.CASCADE)
     val value       = varchar("value", 64)
-    val attribute   = reference("attribute", GeneralAttributes, onDelete = ReferenceOption.CASCADE)
 }
 
 class GeneralOptionEntity(id: EntityID<Int>) : IntEntity(id) {

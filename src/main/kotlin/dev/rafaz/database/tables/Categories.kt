@@ -6,7 +6,7 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 
 object Categories : IntIdTable() {
-    val parentId    = reference("parent_id", Categories).nullable() //integer("parent_id").nullable()
+    val parentId    = reference("id_parent", Categories).nullable() //integer("parent_id").nullable()
     val name        = varchar("name", 128)
 }
 

@@ -3,9 +3,9 @@ package dev.rafaz.database.tables
 import org.jetbrains.exposed.sql.Table
 
 object CategoriesGeneralAttributes : Table() {
-    val category = reference("category", Categories)
-    val attribute = reference("attribute", GeneralAttributes)
+    val category    = reference("id_category", Categories)
+    val attribute   = reference("id_attribute", GeneralAttributes)
 
-    override val primaryKey: PrimaryKey?
+    override val primaryKey: PrimaryKey
         get() = PrimaryKey(category, attribute)
 }

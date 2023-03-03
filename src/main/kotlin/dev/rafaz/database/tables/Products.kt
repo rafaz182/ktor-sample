@@ -8,7 +8,7 @@ import org.jetbrains.exposed.dao.id.IntIdTable
 object Products : IntIdTable() {
     val name        = varchar("name", 128)
     val description = varchar("description", 2048)
-    val category    = reference("category", Categories)
+    val category    = reference("id_category", Categories)
 }
 
 class ProductEntity(id: EntityID<Int>) : IntEntity(id) {

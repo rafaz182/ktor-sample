@@ -2,6 +2,7 @@ val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
 val exposed_version: String by project
+val hikaricp_version: String by project
 
 plugins {
     kotlin("jvm") version "1.8.10"
@@ -42,6 +43,7 @@ dependencies {
     //implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jodatime:$exposed_version")
     implementation("com.mysql:mysql-connector-j:8.0.32")
+    implementation("com.zaxxer:HikariCP:$hikaricp_version")
 
     implementation("ch.qos.logback:logback-classic:$logback_version")
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")

@@ -13,7 +13,7 @@ object GeneralAttributes : IntIdTable() {
 class GeneralAttributeEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<GeneralAttributeEntity>(GeneralAttributes)
 
-    val name        by GeneralAttributes.name
-    val description by GeneralAttributes.description
+    var name        by GeneralAttributes.name
+    var description by GeneralAttributes.description
     val options     by GeneralOptionEntity referrersOn GeneralOptions.attribute
 }

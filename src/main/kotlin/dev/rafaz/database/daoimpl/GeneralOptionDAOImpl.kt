@@ -19,12 +19,10 @@ class GeneralOptionDAOImpl : GeneralOptionsDAO {
     }
 
     override suspend fun editOption(optionId: Int, option: String): Boolean = dbQuery {
-        val updated = GeneralOptionEntity.findById(optionId)?.let{
+        GeneralOptionEntity.findById(optionId)?.let{
             it.value = option
             true
         } ?: false
-
-        updated
     }
 
     override suspend fun deleteOption(optionId: Int): Boolean = dbQuery {

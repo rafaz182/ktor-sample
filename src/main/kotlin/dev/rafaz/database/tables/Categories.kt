@@ -13,7 +13,7 @@ object Categories : IntIdTable() {
 class CategoryEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<CategoryEntity>(Categories)
 
-    val parent      by CategoryEntity optionalReferrersOn Categories.parentId
-    val name        by Categories.name
+    var parent      by CategoryEntity optionalReferencedOn Categories.parentId
+    var name        by Categories.name
     val attribute   by GeneralAttributeEntity via CategoriesGeneralAttributes
 }

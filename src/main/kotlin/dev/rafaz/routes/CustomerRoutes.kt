@@ -1,12 +1,14 @@
 package dev.rafaz.routes
 
 import dev.rafaz.models.Customer
-import dev.rafaz.models.customerStorage
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+
+val customerStorage = mutableListOf<Customer>()
+
 
 //routing functions (route, get, post, etc.)
 fun Route.customerRouting() {
@@ -30,7 +32,7 @@ fun Route.customerRouting() {
                     status = HttpStatusCode.BadRequest
                 )
 
-            val customer = customerStorage.find { it.id == id } ?:
+            val customer = customerStorage.find { it.user.id == id } ?:
                 return@get call.respondText(
                     text = "No customer with id $id",
                     status = HttpStatusCode.NotFound
@@ -50,7 +52,7 @@ fun Route.customerRouting() {
 
         delete(path = "{id?}") {
             val id = call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
-            if (customerStorage.removeIf { it.id == id }) {
+            if (customerStorage.removeIf { it.user.id == id }) {
                 call.respondText("Customer removed correctly", status = HttpStatusCode.Accepted)
             } else {
                 call.respondText("Not Found", status = HttpStatusCode.NotFound)

@@ -1,7 +1,5 @@
 package dev.rafaz
 
-import dev.rafaz.database.ArticleDAO
-import dev.rafaz.database.daoimpl.ArticleDAOImpl
 import dev.rafaz.database.DatabaseFactory
 import dev.rafaz.plugins.*
 import io.ktor.http.*
@@ -11,7 +9,6 @@ import io.ktor.server.auth.jwt.*
 import io.ktor.server.plugins.cors.routing.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import kotlinx.coroutines.runBlocking
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
@@ -34,13 +31,5 @@ fun Application.module() {
     installJWTAuth(myRealm, audience, issuer, secret)
     //install(Session)
 
-    val dao: ArticleDAO = ArticleDAOImpl().apply {
-        runBlocking {
-            if(allArticles().isEmpty()) {
-                addNewArticle("The drive to develop!", "...it's what keeps me going.")
-            }
-        }
-    }
-
-    configureRouting(audience, issuer, secret, dao)
+    configureRouting(audience, issuer, secret)
 }

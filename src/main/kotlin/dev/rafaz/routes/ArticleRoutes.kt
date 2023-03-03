@@ -1,6 +1,6 @@
 package dev.rafaz.routes
 
-import dev.rafaz.database.ArticleDAO
+import dev.rafaz.database.DAO
 import dev.rafaz.dtos.ArticleDTO
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -8,16 +8,16 @@ import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
-fun Route.articleRouting(articleDAO: ArticleDAO) {
+fun Route.articleRouting() {
     route(path = "/article") {
         get {
-            val articles = articleDAO.allArticles()
+            val articles = DAO.Article.allArticles()
             call.respond(articles)
         }
         post {
             val article = call.receive<ArticleDTO>()
 
-            val insertResult = articleDAO.addNewArticle(article.title, article.body)
+            val insertResult = DAO.Article.addNewArticle(article.title, article.body)
 
             if (insertResult != null) {
                 call.respondText(

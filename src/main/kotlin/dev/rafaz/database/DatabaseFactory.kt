@@ -59,6 +59,23 @@ object DatabaseFactory {
                 val option8 = DAO.GeneralOptions.addOption(attr2.id.value, "Amarelo")
                 val option9 = DAO.GeneralOptions.addOption(attr2.id.value, "Vermelho")
             }
+
+            with(DAO.Category) {
+                if (allCategories().isNotEmpty()) return@with
+
+                val cate1 = newCategory(null, null,  "Casa")
+
+                val cate1_1 = newCategory(cate1.id.value, null, "Quarto")
+                val cate1_2 = newCategory(cate1.id.value, null, "Banheiro")
+                val cate1_3 = newCategory(cate1.id.value, null, "Sala")
+
+                val cate1_1_1 = newCategory(cate1_1.id.value, 2, "Colchão")
+                addAttribute(cate1_1_1.id.value, 2)
+                val cate1_1_2 = newCategory(cate1_1.id.value, 2, "Travesseiro")
+                addAttribute(cate1_1_2.id.value, 2)
+                val cate1_1_3 = newCategory(cate1_1.id.value, 2, "Lençóis")
+                addAttribute(cate1_1_3.id.value, 2)
+            }
         }
     }
 

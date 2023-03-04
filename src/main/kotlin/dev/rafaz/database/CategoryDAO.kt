@@ -6,4 +6,5 @@ interface CategoryDAO {
     suspend fun allCategories(): List<CategoryEntity>
     suspend fun newCategory(parentId: Int?, name: String): CategoryEntity
     suspend fun addAttribute(categoryId: Int, attributeId: Int): Boolean
+    suspend fun getCategory(categoryId: Int): CategoryEntity?
 }

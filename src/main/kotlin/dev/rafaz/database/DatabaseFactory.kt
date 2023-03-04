@@ -63,17 +63,17 @@ object DatabaseFactory {
             with(DAO.Category) {
                 if (allCategories().isNotEmpty()) return@with
 
-                val cate1 = newCategory(null, null,  "Casa")
+                val cate1 = newCategory(null,  "Casa")
 
-                val cate1_1 = newCategory(cate1.id.value, null, "Quarto")
-                val cate1_2 = newCategory(cate1.id.value, null, "Banheiro")
-                val cate1_3 = newCategory(cate1.id.value, null, "Sala")
+                val cate1_1 = newCategory(cate1.id.value, "Quarto")
+                val cate1_2 = newCategory(cate1.id.value, "Banheiro")
+                val cate1_3 = newCategory(cate1.id.value, "Sala")
 
-                val cate1_1_1 = newCategory(cate1_1.id.value, 2, "Colchão")
+                val cate1_1_1 = newCategory(cate1_1.id.value, "Colchão")
                 addAttribute(cate1_1_1.id.value, 2)
-                val cate1_1_2 = newCategory(cate1_1.id.value, 2, "Travesseiro")
+                val cate1_1_2 = newCategory(cate1_1.id.value, "Travesseiro")
                 addAttribute(cate1_1_2.id.value, 2)
-                val cate1_1_3 = newCategory(cate1_1.id.value, 2, "Lençóis")
+                val cate1_1_3 = newCategory(cate1_1.id.value, "Lençóis")
                 addAttribute(cate1_1_3.id.value, 2)
             }
         }

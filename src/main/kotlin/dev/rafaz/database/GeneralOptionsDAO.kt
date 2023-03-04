@@ -10,18 +10,4 @@ interface GeneralOptionsDAO {
     suspend fun addOption(attributeId: Int, option: String): GeneralOptionEntity
     suspend fun editOption(optionId: Int, option: String): Boolean
     suspend fun deleteOption(optionId: Int): Boolean
-
-    fun ResultRow.toData(): GeneralOption {
-        return GeneralOption(
-            id = this[GeneralOptions.id].value,
-            value = this[GeneralOptions.value]
-        )
-    }
-}
-
-fun GeneralOptionEntity.toData(): GeneralOption {
-    return GeneralOption(
-        id = this.id.value,
-        value = this.value
-    )
 }

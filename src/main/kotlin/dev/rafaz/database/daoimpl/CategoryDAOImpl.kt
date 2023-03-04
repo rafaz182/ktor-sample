@@ -26,4 +26,8 @@ class CategoryDAOImpl : CategoryDAO {
         insertStatement.resultedValues?.singleOrNull() ?: return@dbQuery false
         true
     }
+
+    override suspend fun getCategory(categoryId: Int): CategoryEntity? {
+        return CategoryEntity.findById(categoryId)
+    }
 }

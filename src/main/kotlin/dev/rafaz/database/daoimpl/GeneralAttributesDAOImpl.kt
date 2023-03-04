@@ -3,10 +3,10 @@ package dev.rafaz.database.daoimpl
 import dev.rafaz.database.DatabaseFactory.dbQuery
 import dev.rafaz.database.GeneralAttributesDAO
 import dev.rafaz.database.GeneralOptionsDAO
+import dev.rafaz.database.TypeTransformation.toData
 import dev.rafaz.database.tables.CategoriesGeneralAttributes
 import dev.rafaz.database.tables.GeneralAttributeEntity
 import dev.rafaz.database.tables.GeneralAttributes
-import dev.rafaz.database.toData
 import dev.rafaz.models.GeneralAttribute
 import dev.rafaz.models.GeneralOption
 import org.jetbrains.exposed.sql.JoinType

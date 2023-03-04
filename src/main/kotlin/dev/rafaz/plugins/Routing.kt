@@ -1,6 +1,7 @@
 package dev.rafaz.plugins
 
 import dev.rafaz.routes.articleRouting
+import dev.rafaz.routes.categoryRouting
 import dev.rafaz.routes.customerRouting
 import dev.rafaz.routes.loginRouting
 import io.ktor.server.application.*
@@ -15,5 +16,6 @@ fun Application.configureRouting(audience: String, issuer: String, secret: Strin
         customerRouting()
         loginRouting(audience, issuer, secret)
         articleRouting()
+        categoryRouting()
     }
 }

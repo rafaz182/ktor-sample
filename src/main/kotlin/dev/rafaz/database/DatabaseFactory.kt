@@ -70,7 +70,7 @@ object DatabaseFactory {
                 val cate1_3 = newCategory(cate1.id.value, "Sala")
 
                 val cate1_1_1 = newCategory(cate1_1.id.value, "Colchão")
-                addAttribute(cate1_1_1.id.value, 2)
+                addAttribute(cate1_1_1.id.value, 1)
                 val cate1_1_2 = newCategory(cate1_1.id.value, "Travesseiro")
                 addAttribute(cate1_1_2.id.value, 2)
                 val cate1_1_3 = newCategory(cate1_1.id.value, "Lençóis")

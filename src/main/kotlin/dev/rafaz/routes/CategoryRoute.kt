@@ -1,7 +1,6 @@
 package dev.rafaz.routes
 
 import dev.rafaz.database.DAO
-import dev.rafaz.database.TypeTransformation.toData
 import dev.rafaz.dtos.AddAttributeDTO
 import dev.rafaz.dtos.CategoryDTO
 import io.ktor.http.*
@@ -14,7 +13,7 @@ fun Route.categoryRouting() {
     route(path = "/category") {
         get {
             val categoriesEntity = DAO.Category.allCategories()
-            call.respond(categoriesEntity.map { it.toData() })
+            call.respond(categoriesEntity)
         }
         get(path = "{id?}") {
             val id = call.parameters["id"]?.toInt() ?: return@get call.respondText(text = "Missing id", status = HttpStatusCode.BadRequest)
@@ -23,6 +22,11 @@ fun Route.categoryRouting() {
                 status = HttpStatusCode.NotFound
             )
             call.respond(category)
+        }
+        get(path = "parent/{parentId}") {
+            val parentId = call.parameters["parentId"]?.toInt() ?: return@get call.respondText(text = "Missing id", status = HttpStatusCode.BadRequest)
+            val categories = DAO.Category.getCategories(parentId)
+            call.respond(categories)
         }
         post {
             val dto = call.receive<CategoryDTO>()

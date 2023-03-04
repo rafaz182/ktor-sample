@@ -9,12 +9,12 @@ import dev.rafaz.models.GeneralOption
 
 object TypeTransformation {
 
-    fun CategoryEntity.toData(): Category {
+    fun CategoryEntity.toData(hasParent: Boolean = false): Category {
         return Category(
             id = id.value,
-            parent = parent?.toData(),
+            parent = if (hasParent) parent?.toData(true) else null,
             name = name,
-            attributes = attribute.map { it.toData() }
+            attributes = if (hasParent) attribute.map { it.toData() } else emptyList()
         )
     }
 

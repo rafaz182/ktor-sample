@@ -22,3 +22,19 @@ curl -X POST --location "http://127.0.0.1:8080/article" \
             \"body\": \"NOW THINGS ARE GETTING EXCITANT\"
         }" \
     -i
+
+curl -X GET --location "http://127.0.0.1:8080/category" \
+    -H "Accept: application/json" \
+    -i
+
+curl -X GET --location "http://127.0.0.1:8080/category/parent/37" \
+    -H "Accept: application/json" \
+    -i
+
+curl -X POST --location "http://127.0.0.1:8080/category" \
+    -H "Content-Type: application/json" \
+    -d "{
+            \"name\": \"Fronha\",
+            \"attributesId\": [1, 2]
+        }" \
+    -i
